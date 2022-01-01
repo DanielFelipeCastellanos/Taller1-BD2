@@ -476,7 +476,7 @@ BEGIN
     from huellitas.tipos_lote
     where nombre like '%suelas%';
     
-    select tipo_lote into v_tipo_lote
+    select id_tipo_lote into v_tipo_lote
 	from huellitas.lotes_importe 
 	where id_lote = new.id_lote;
 	
