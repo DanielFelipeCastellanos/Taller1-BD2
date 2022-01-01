@@ -1,3 +1,13 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema Huellitas
+-- -----------------------------------------------------
+
 -- -----------------------------------------------------
 -- Schema Huellitas
 -- -----------------------------------------------------
@@ -432,25 +442,25 @@ END$$
 USE `Huellitas`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `Huellitas`.`validar_ref_producto_bi_lotes_importe` BEFORE INSERT ON `Lotes_Importe` FOR EACH ROW
 BEGIN
-	declare v_tipo_lote int;
+	declare v_tipo_lote varchar(75);
     
     select trim(nombre) into v_tipo_lote
     from huellitas.tipos_lote
     where id_tipo_lote = new.id_tipo_lote;
     
-    if v_tipo_lote = '%moldes%' then
+    if v_tipo_lote like '%moldes%' then
 		set new.ref_producto = concat('mol-', new.ref_producto);
     end if;
     
-    if v_tipo_lote = '%materiales%' then
+    if v_tipo_lote like '%materiales%' then
 		set new.ref_producto = concat('mat-', new.ref_producto);
     end if;
     
-    if v_tipo_lote = '%suelas%' then
+    if v_tipo_lote like '%suelas%' then
 		set new.ref_producto = concat('sue-', new.ref_producto);
     end if;
     
-    if v_tipo_lote = '%accesorios%' then
+    if v_tipo_lote like '%accesorios%' then
 		set new.ref_producto = concat('acc-', new.ref_producto);
     end if;
 END$$
@@ -487,7 +497,7 @@ BEGIN
     from huellitas.tipos_lote
     where nombre like '%moldes%';
     
-    select tipo_lote into v_tipo_lote
+    select id_tipo_lote into v_tipo_lote
 	from huellitas.lotes_importe 
 	where id_lote = new.id_lote;
 	
@@ -515,12 +525,12 @@ BEGIN
 END$$
 
 USE `Huellitas`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `Huellitas`.`verificar_ayudante_bi_lotes_zapatos` BEFORE INSERT ON `Lotes_Importe` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `Huellitas`.`verificar_ayudante_bi_lotes_zapatos` BEFORE INSERT ON `Lotes_Zapatos` FOR EACH ROW
 BEGIN
 	declare v_cargo int;
     declare v_id_ayudante int;
     
-    select cargo into v_cargo
+    select id_cargo into v_cargo
 	from huellitas.empleados 
 	where id_empleado = new.ayudante;
 	
@@ -832,4 +842,9 @@ BEGIN
     end if;
 END$$
 
+
 DELIMITER ;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
