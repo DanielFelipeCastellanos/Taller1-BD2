@@ -822,14 +822,14 @@ BEGIN
     from huellitas.trozos_fabricacion
     where id_detalle_fabricacion = new.id_detalle_fabricacion;
     
-    if v_cantidad_usada = new.cantidad then
-		signal sqlstate '45000'
-		set message_text = 'Cantidad total de trozos alcanzada', mysql_errno = 45000;
-    end if;
-    
     if new.cantidad > v_cantidad_trozos then
 		signal sqlstate '45000'
 		set message_text = 'La cantidad a utilizar es mayor a la especificada en el diseño', mysql_errno = 45000;
+    end if;
+    
+    if v_cantidad_usada = v_cantidad_trozos then
+		signal sqlstate '45000'
+		set message_text = 'Cantidad total de trozos alcanzada', mysql_errno = 45000;
     end if;
 END$$
 
