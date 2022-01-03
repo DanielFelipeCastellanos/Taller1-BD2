@@ -719,9 +719,9 @@ BEGIN
     from huellitas.info_suelas
     where id_info_suela = v_id_info_suela;
     
-	if (v_talla_molde <> v_talla_zapato) and (v_talla_suela <>v_talla_zapato) then
+	if (v_talla_molde <> v_talla_zapato) or (v_talla_suela <>v_talla_zapato) then
 		signal sqlstate '45000'
-		set message_text = 'La talla del molde y suela debe ser igual a la talla del zapato', mysql_errno = 45000;
+		set message_text = 'La talla del molde y/o suela debe ser igual a la talla del zapato', mysql_errno = 45000;
     end if;
 END$$
 
