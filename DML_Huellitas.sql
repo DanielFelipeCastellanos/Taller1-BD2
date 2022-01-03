@@ -37,7 +37,8 @@ INSERT INTO huellitas.empleados (nombre,id_cargo)
 	VALUES ('Paolo Walker',3);
 INSERT INTO huellitas.empleados (nombre,id_cargo)
 	VALUES ('Efesto Sanchez',3);
-	-- --------------------------------------
+
+-- --------------------------------------
 -- Insertar datos huellitas.lotes_importe
 -- --------------------------------------
 INSERT INTO huellitas.lotes_importe (id_tipo_lote,ref_producto,cantidad,descripcion,ayudante)
@@ -149,7 +150,15 @@ INSERT INTO huellitas.suelas (id_info_suela)
 INSERT INTO huellitas.suelas (id_info_suela)
 	VALUES (1);
 INSERT INTO huellitas.suelas (id_info_suela)
-	VALUES (2);
+	VALUES (1);
+INSERT INTO huellitas.suelas (id_info_suela)
+	VALUES (1);
+INSERT INTO huellitas.suelas (id_info_suela)
+	VALUES (1);
+INSERT INTO huellitas.suelas (id_info_suela)
+	VALUES (1);
+INSERT INTO huellitas.suelas (id_info_suela)
+	VALUES (1);
 INSERT INTO huellitas.suelas (id_info_suela)
 	VALUES (2);
 INSERT INTO huellitas.suelas (id_info_suela)
@@ -158,3 +167,118 @@ INSERT INTO huellitas.suelas (id_info_suela)
 	VALUES (2);
 INSERT INTO huellitas.suelas (id_info_suela)
 	VALUES (2);
+INSERT INTO huellitas.suelas (id_info_suela)
+	VALUES (2);
+
+-- --------------------------------------
+-- Insertar datos huellitas.disenos
+-- --------------------------------------
+INSERT INTO huellitas.disenos (nombre,talla_min,talla_max,cantidad_trozos,cantidad_accesorios,descripcion)
+	VALUES ('Tenis confort',35,40,4,1,'Tenis ergonómico negro y azul para hombre');
+
+-- --------------------------------------
+-- Insertar datos huellitas.grupo_diseno
+-- --------------------------------------
+INSERT INTO huellitas.grupo_diseno (id_diseno,id_maestro)
+	VALUES (1,1);
+INSERT INTO huellitas.grupo_diseno (id_diseno,id_maestro)
+	VALUES (1,2);
+INSERT INTO huellitas.grupo_diseno (id_diseno,id_maestro)
+	VALUES (1,3);
+
+-- ------------------------------------------
+-- Insertar datos huellitas.materiales_diseno
+-- ------------------------------------------
+INSERT INTO huellitas.materiales_diseno (id_lote_material,id_diseno)
+	VALUES (4,1);
+INSERT INTO huellitas.materiales_diseno (id_lote_material,id_diseno)
+	VALUES (5,1);
+
+-- ------------------------------------------
+-- Insertar datos huellitas.accesorios_diseno
+-- ------------------------------------------
+INSERT INTO huellitas.accesorios_diseno (id_lote,id_diseno,cantidad)
+	VALUES (14,1,1);
+
+
+-- --------------------------------------------
+-- Insertar datos huellitas.referencias_zapatos
+-- --------------------------------------------
+INSERT INTO huellitas.referencias_zapatos (talla,id_diseno)
+	VALUES (40,1);
+
+-- --------------------------------------------
+-- Insertar datos huellitas.lotes_zapatos
+-- --------------------------------------------
+INSERT INTO huellitas.lotes_zapatos (cantidad,ref_zapato,ayudante)
+	VALUES (10,1,6);
+
+-- ---------------------------------------------
+-- Insertar datos huellitas.detalles_fabricacion
+-- ---------------------------------------------
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,6,1,1,1);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,6,1,2,1);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,6,1,3,1);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,6,1,4,1);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,6,1,5,1);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,6,1,6,1);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,6,1,7,1);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,6,1,8,1);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,6,1,9,1);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,6,1,10,1);
+
+-- ---------------------------------------------
+-- Insertar datos huellitas.zapatos
+-- ---------------------------------------------
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (1,1);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (1,2);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (1,3);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (1,4);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (1,5);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (1,6);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (1,7);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (1,8);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (1,9);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (1,10);
+
+-- ---------------------------------------------
+-- Insertar datos huellitas.trozos_material
+-- ---------------------------------------------
+INSERT INTO huellitas.trozos_material (id_lote_material,cortador,cantidad,descripcion)
+	VALUES (4,4,60,'empeine tenis');
+INSERT INTO huellitas.trozos_material (id_lote_material,cortador,cantidad,descripcion)
+	VALUES (5,4,80,'orejas tenis');
+INSERT INTO huellitas.trozos_material (id_lote_material,cortador,cantidad,descripcion)
+	VALUES (4,5,40,'legueta tenis');
+INSERT INTO huellitas.trozos_material (id_lote_material,cortador,cantidad,descripcion)
+	VALUES (5,5,40,'talón tenis');
+
+-- ---------------------------------------------
+-- Insertar datos huellitas.trozos_fabricacion
+-- ---------------------------------------------
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (1,1,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (2,1,2);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (3,1,1);
