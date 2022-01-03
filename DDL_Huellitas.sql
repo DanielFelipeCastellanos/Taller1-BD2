@@ -777,7 +777,7 @@ BEGIN
     declare estado condition for sqlstate '45000';
     
     select id_lote_material into v_material_trozo
-    from huellitas.trozos_materiales
+    from huellitas.trozos_material
     where ref_trozo = new.ref_trozo;
     
     select ref_zapato into v_ref_zapato
