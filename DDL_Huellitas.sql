@@ -607,7 +607,7 @@ BEGIN
     from huellitas.tipos_lote
     where nombre like '%accesorios%';
     
-    select tipo_lote into v_tipo_lote
+    select id_tipo_lote into v_tipo_lote
 	from huellitas.lotes_importe 
 	where id_lote = new.id_lote;
     
@@ -629,7 +629,7 @@ BEGIN
     from huellitas.lotes_importe
     where id_lote = new.id_lote;
     
-    select cantidad into v_cantidad_diseno
+    select cantidad_accesorios into v_cantidad_diseno
     from huellitas.disenos
     where id_diseno = new.id_diseno;
     
