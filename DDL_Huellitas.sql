@@ -282,6 +282,7 @@ CREATE TABLE IF NOT EXISTS `Huellitas`.`Detalles_Fabricacion` (
   INDEX `FK_id_molde_df_idx` (`id_molde` ASC) VISIBLE,
   INDEX `FK_id_suela_df_idx` (`id_suela` ASC) VISIBLE,
   INDEX `FK_ref_zapato_df_idx` (`ref_zapato` ASC) VISIBLE,
+  UNIQUE INDEX `id_suela_UNIQUE` (`id_suela` ASC) VISIBLE,
   CONSTRAINT `FK_id_maestro_df`
     FOREIGN KEY (`id_maestro`)
     REFERENCES `Huellitas`.`Empleados` (`id_empleado`)
@@ -719,9 +720,9 @@ BEGIN
     from huellitas.info_suelas
     where id_info_suela = v_id_info_suela;
     
-	if (v_talla_molde <> v_talla_zapato) or (v_talla_suela <>v_talla_zapato) then
+	if (v_talla_molde <> v_talla_zapato) or (v_talla_suela <> v_talla_zapato) then
 		signal sqlstate '45000'
-		set message_text = 'La talla del molde y/o suela debe ser igual a la talla del zapato', mysql_errno = 45000;
+		set message_text = 'La talla del molde y suela debe ser igual a la talla del zapato', mysql_errno = 45000;
     end if;
 END$$
 
