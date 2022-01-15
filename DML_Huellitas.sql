@@ -81,8 +81,6 @@ INSERT INTO huellitas.lotes_importe (id_tipo_lote,ref_producto,cantidad,descripc
 	VALUES (4,'3',600,'Hebilla plateada circular',6);
 INSERT INTO huellitas.lotes_importe (id_tipo_lote,ref_producto,cantidad,descripcion)
 	VALUES (4,'4',600,'Hebilla plateada rombo');
-INSERT INTO huellitas.lotes_importe (id_tipo_lote,ref_producto,cantidad,descripcion)
-	VALUES (4,'5',600,'Flor azul cuero');
 
 -- --------------------------------------
 -- Insertar datos huellitas.info_moldes
@@ -169,6 +167,16 @@ INSERT INTO huellitas.suelas (id_info_suela)
 	VALUES (1);
 INSERT INTO huellitas.suelas (id_info_suela)
 	VALUES (1);
+INSERT INTO huellitas.suelas (id_info_suela)
+	VALUES (2);
+INSERT INTO huellitas.suelas (id_info_suela)
+	VALUES (2);
+INSERT INTO huellitas.suelas (id_info_suela)
+	VALUES (2);
+INSERT INTO huellitas.suelas (id_info_suela)
+	VALUES (2);
+INSERT INTO huellitas.suelas (id_info_suela)
+	VALUES (2);
 INSERT INTO huellitas.suelas (id_info_suela)
 	VALUES (2);
 INSERT INTO huellitas.suelas (id_info_suela)
@@ -296,6 +304,60 @@ INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,canti
 	VALUES (2,1,2);
 INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
 	VALUES (3,1,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (1,2,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (2,2,2);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (3,2,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (1,3,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (2,3,2);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (3,3,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (1,4,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (2,4,2);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (3,4,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (1,5,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (2,5,2);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (3,5,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (1,6,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (2,6,2);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (3,6,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (1,7,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (2,7,2);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (3,7,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (1,8,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (2,8,2);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (3,8,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (1,9,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (2,9,2);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (3,9,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (1,10,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (2,10,2);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (3,10,1);
 	
 /* 
  * MODIFICAR EL ROL DE UN EMPLEADO DE AYUDANTE MAESTRO ZAPATERO
@@ -348,3 +410,194 @@ INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,canti
 -- --------------------------------------------------------
 -- Actualizar id_lote tabla huellitas.zapatos
 -- --------------------------------------------------------
+UPDATE huellitas.zapatos
+	SET id_lote = null
+	WHERE id_zapato = 10;
+	
+/* 
+ * ELIMINAR UN DISEÑO DE UN ZAPATO EN BASE DE DATOS QUE YA TENGA
+ * UN LOTE DE 10 ZAPATOS GENERADOS
+ */
+
+-- --------------------------------------------------------
+-- Actualizar id_lote tabla huellitas.zapatos
+-- --------------------------------------------------------
+DELETE FROM huellitas.disenos
+	WHERE id_diseno = 1;
+	
+/*
+ * INSERTAR UN NUEVO ACCESORIO EN BASE DE DATOS Y LUEGO INSERTAR UN
+ * DISEÑO QUE USE ESTE ACCESORIO
+*/
+
+-- -------------------------------------------------------
+-- Insertar registro huellitas.lotes_importe 
+-- -------------------------------------------------------
+INSERT INTO huellitas.lotes_importe (id_tipo_lote,ref_producto,cantidad,descripcion)
+	VALUES (4,'5',600,'Flor azul cuero');
+
+-- -------------------------------------------------------
+-- Insertar registro huellitas.disenos 
+-- -------------------------------------------------------
+INSERT INTO huellitas.disenos (nombre,talla_min,talla_max,cantidad_trozos,cantidad_accesorios,descripcion)
+	VALUES ('Zapatilla Fortune',34,38,3,2,'Zapatilla negra y azul para dama');
+
+-- -------------------------------------------------------
+-- Insertar registro huellitas.grupo_diseno
+-- -------------------------------------------------------
+INSERT INTO huellitas.grupo_diseno (id_diseno,id_maestro)
+	VALUES (2,1);
+INSERT INTO huellitas.grupo_diseno (id_diseno,id_maestro)
+	VALUES (2,2);
+INSERT INTO huellitas.grupo_diseno (id_diseno,id_maestro)
+	VALUES (2,3);
+
+-- -------------------------------------------------------
+-- Insertar registro huellitas.materiales_diseno
+-- -------------------------------------------------------
+INSERT INTO huellitas.materiales_diseno (id_lote_material,id_diseno)
+	VALUES (6,2);
+INSERT INTO huellitas.materiales_diseno (id_lote_material,id_diseno)
+	VALUES (7,2);
+
+-- ------------------------------------------------------
+-- Insertar registro huellitas.accesorios_diseno
+-- ------------------------------------------------------
+INSERT INTO huellitas.accesorios_diseno (id_lote,id_diseno,cantidad)
+	VALUES (15,2,1);
+INSERT INTO huellitas.accesorios_diseno (id_lote,id_diseno,cantidad)
+	VALUES (16,2,1);
+
+-- --------------------------------------------
+-- Insertar datos huellitas.referencias_zapatos
+-- --------------------------------------------
+INSERT INTO huellitas.referencias_zapatos (talla,id_diseno)
+	VALUES (38,2);
+
+-- -----------------------------------------------------
+-- Insertar registro huellitas.trozos_material
+-- -----------------------------------------------------
+INSERT INTO huellitas.trozos_material (id_lote_material,cortador,cantidad,descripcion)
+	VALUES (6,5,40,'correa zapatilla');
+INSERT INTO huellitas.trozos_material (id_lote_material,cortador,cantidad,descripcion)
+	VALUES (7,4,60,'empeine zapatilla');
+INSERT INTO huellitas.trozos_material (id_lote_material,cortador,cantidad,descripcion)
+	VALUES (7,4,80,'talón zapatilla');
+
+-- --------------------------------------------
+-- Insertar datos huellitas.lotes_zapatos
+-- --------------------------------------------
+INSERT INTO huellitas.lotes_zapatos (cantidad,ref_zapato,ayudante)
+	VALUES (10,2,7);
+
+-- ---------------------------------------------
+-- Insertar datos huellitas.detalles_fabricacion
+-- ---------------------------------------------
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,7,11,11,2);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,7,11,12,2);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,7,11,13,2);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,7,11,14,2);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,7,11,15,2);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,7,11,16,2);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,7,11,17,2);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,7,11,18,2);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,7,11,19,2);
+INSERT INTO huellitas.detalles_fabricacion (id_maestro,id_ayudante,id_molde,id_suela,ref_zapato)
+	VALUES (1,7,11,20,2);
+
+-- ---------------------------------------------
+-- Insertar datos huellitas.zapatos
+-- ---------------------------------------------
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (2,11);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (2,12);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (2,13);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (2,14);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (2,15);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (2,16);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (2,17);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (2,18);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (2,19);
+INSERT INTO huellitas.zapatos (id_lote,id_detalle)
+	VALUES (2,20);
+
+-- ---------------------------------------------
+-- Insertar datos huellitas.trozos_fabricacion
+-- ---------------------------------------------
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (5,11,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (6,11,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (7,11,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (5,12,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (6,12,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (7,12,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (5,13,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (6,13,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (7,13,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (5,14,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (6,14,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (7,14,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (5,15,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (6,15,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (7,15,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (5,16,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (6,16,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (7,16,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (5,17,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (6,17,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (7,17,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (5,18,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (6,18,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (7,18,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (5,19,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (6,19,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (7,19,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (5,20,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (6,20,1);
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (7,20,1);

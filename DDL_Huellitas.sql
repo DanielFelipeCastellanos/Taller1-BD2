@@ -169,6 +169,7 @@ CREATE TABLE IF NOT EXISTS `Huellitas`.`Referencias_Zapatos` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 -- -----------------------------------------------------
 -- Table `Huellitas`.`Lotes_Zapatos`
 -- -----------------------------------------------------
@@ -185,7 +186,7 @@ CREATE TABLE IF NOT EXISTS `Huellitas`.`Lotes_Zapatos` (
   CONSTRAINT `FK_ref_zapato_lz`
     FOREIGN KEY (`ref_zapato`)
     REFERENCES `Huellitas`.`Referencias_Zapatos` (`ref_zapato`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `FK_id_ayudante_lz`
     FOREIGN KEY (`ayudante`)
@@ -194,7 +195,15 @@ CREATE TABLE IF NOT EXISTS `Huellitas`.`Lotes_Zapatos` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+alter table `Huellitas`.`Lotes_Zapatos`
+	drop foreign key `FK_ref_zapato_lz`;
 
+alter table `Huellitas`.`Lotes_Zapatos`
+	add CONSTRAINT `FK_ref_zapato_lz`
+    FOREIGN KEY (`ref_zapato`)
+    REFERENCES `Huellitas`.`Referencias_Zapatos` (`ref_zapato`)
+    ON DELETE cascade
+    ON UPDATE NO action;
 -- -----------------------------------------------------
 -- Table `Huellitas`.`Grupo_Diseno`
 -- -----------------------------------------------------
@@ -212,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `Huellitas`.`Grupo_Diseno` (
   CONSTRAINT `FK_id_diseno_gd`
     FOREIGN KEY (`id_diseno`)
     REFERENCES `Huellitas`.`Disenos` (`id_diseno`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -255,7 +264,7 @@ CREATE TABLE IF NOT EXISTS `Huellitas`.`Accesorios_diseno` (
   CONSTRAINT `FK_id_diseno_ad`
     FOREIGN KEY (`id_diseno`)
     REFERENCES `Huellitas`.`Disenos` (`id_diseno`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `Fk_id_lote_accesorio_ad`
     FOREIGN KEY (`id_lote`)
@@ -328,7 +337,7 @@ CREATE TABLE IF NOT EXISTS `Huellitas`.`Zapatos` (
   CONSTRAINT `FK_id_detalle_zap`
     FOREIGN KEY (`id_detalle`)
     REFERENCES `Huellitas`.`Detalles_Fabricacion` (`id_detalle`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -349,7 +358,7 @@ CREATE TABLE IF NOT EXISTS `Huellitas`.`Materiales_Diseno` (
   CONSTRAINT `FK_id_diseno_md`
     FOREIGN KEY (`id_diseno`)
     REFERENCES `Huellitas`.`Disenos` (`id_diseno`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -371,7 +380,7 @@ CREATE TABLE IF NOT EXISTS `Huellitas`.`Trozos_Fabricacion` (
   CONSTRAINT `FK_id_detalle_tf`
     FOREIGN KEY (`id_detalle_fabricacion`)
     REFERENCES `Huellitas`.`Detalles_Fabricacion` (`id_detalle`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -831,5 +840,6 @@ BEGIN
 		set message_text = 'Cantidad total de trozos alcanzada', mysql_errno = 45000;
     end if;
 END$$
+
 
 DELIMITER ;
