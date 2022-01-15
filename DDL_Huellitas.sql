@@ -159,16 +159,15 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `Huellitas`.`Referencias_Zapatos` (
   `ref_zapato` INT NOT NULL AUTO_INCREMENT,
   `talla` FLOAT NOT NULL,
-  `id_diseno` INT NOT NULL,
+  `id_diseno` INT NULL,
   PRIMARY KEY (`ref_zapato`),
   INDEX `FK_id_diseno_idx` (`id_diseno` ASC) VISIBLE,
   CONSTRAINT `FK_id_diseno`
     FOREIGN KEY (`id_diseno`)
     REFERENCES `Huellitas`.`Disenos` (`id_diseno`)
-    ON DELETE CASCADE
+    ON DELETE SET NULL
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `Huellitas`.`Lotes_Zapatos`
@@ -306,7 +305,7 @@ CREATE TABLE IF NOT EXISTS `Huellitas`.`Detalles_Fabricacion` (
   CONSTRAINT `FK_ref_zapato_df`
     FOREIGN KEY (`ref_zapato`)
     REFERENCES `Huellitas`.`Referencias_Zapatos` (`ref_zapato`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
