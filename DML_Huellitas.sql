@@ -1,3 +1,9 @@
+-- ****************** PUNTO 3 ****************** --
+
+/* 
+ * INSERTAR 3 MAESTROS ZAPATEROS, 2 AYUDANTES Y 2 CORTADORES
+ */
+
 -- -------------------------------------
 -- Insertar datos huellitas.tipos_rol
 -- -------------------------------------
@@ -8,18 +14,6 @@ INSERT INTO huellitas.cargos (nombre)
 INSERT INTO huellitas.cargos (nombre)
 	VALUES ('Ayudante');
 
--- --------------------------------------
--- Insertar datos huellitas.tipos_lote
--- --------------------------------------
-INSERT INTO huellitas.tipos_lote (nombre)
-	VALUES ('Moldes');
-INSERT INTO huellitas.tipos_lote (nombre)
-	VALUES ('Materiales');
-INSERT INTO huellitas.tipos_lote (nombre)
-	VALUES ('Suelas');
-INSERT INTO huellitas.tipos_lote (nombre)
-	VALUES ('Accesorios');	
-	
 -- --------------------------------------
 -- Insertar datos huellitas.empleados
 -- --------------------------------------
@@ -37,6 +31,22 @@ INSERT INTO huellitas.empleados (nombre,id_cargo)
 	VALUES ('Paolo Walker',3);
 INSERT INTO huellitas.empleados (nombre,id_cargo)
 	VALUES ('Efesto Sanchez',3);
+
+/* 
+ * INSERTAR UN NUEVO DISEÑO DE UN ZAPATO
+ */
+
+-- --------------------------------------
+-- Insertar datos huellitas.tipos_lote
+-- --------------------------------------
+INSERT INTO huellitas.tipos_lote (nombre)
+	VALUES ('Moldes');
+INSERT INTO huellitas.tipos_lote (nombre)
+	VALUES ('Materiales');
+INSERT INTO huellitas.tipos_lote (nombre)
+	VALUES ('Suelas');
+INSERT INTO huellitas.tipos_lote (nombre)
+	VALUES ('Accesorios');	
 
 -- --------------------------------------
 -- Insertar datos huellitas.lotes_importe
@@ -200,6 +210,10 @@ INSERT INTO huellitas.materiales_diseno (id_lote_material,id_diseno)
 INSERT INTO huellitas.accesorios_diseno (id_lote,id_diseno,cantidad)
 	VALUES (14,1,1);
 
+/* 
+ * INSERTAR UN NUEVO LOTE DE 10 ZAPATOS GENERADOS A PARTIR DE ESTE DISEÑO Y
+ * CON LOS EMPLEADOS YA CREADOS
+ */
 
 -- --------------------------------------------
 -- Insertar datos huellitas.referencias_zapatos
@@ -282,3 +296,55 @@ INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,canti
 	VALUES (2,1,2);
 INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
 	VALUES (3,1,1);
+	
+/* 
+ * MODIFICAR EL ROL DE UN EMPLEADO DE AYUDANTE MAESTRO ZAPATERO
+ */
+
+-- --------------------------------------------
+-- Actualizar cargo tabla huellitas.empleados
+-- --------------------------------------------
+UPDATE huellitas.empleados 
+	SET id_cargo = 1
+	WHERE id_empleado = 6;
+	
+/* 
+ * ACTUALIZAR EL DISEÑO DE UN ZAPATO AGREGANDO UN ACCESORIO NUEVO
+ */
+
+-- --------------------------------------------------------
+-- Actualizar cantidad_accesorios tabla huellitas.empleados 
+-- --------------------------------------------------------
+UPDATE huellitas.disenos 
+	SET cantidad_accesorios = 2
+	WHERE id_diseno = 1;
+
+-- --------------------------------------------------------
+-- Insertar accesorio tabla huellitas.accesorios_diseno 
+-- --------------------------------------------------------
+INSERT INTO huellitas.accesorios_diseno (id_lote,id_diseno,cantidad)
+	VALUES (13,1,1);
+
+/* 
+ * ACTUALIZAR EL DISEÑO DE UN ZAPATO AGREGANDO UN TROZO DE UN MATERIAL DIFERENTE
+ */
+
+-- --------------------------------------------------------
+-- Actualizar cantidad_trozos tabla huellitas.empleados 
+-- --------------------------------------------------------
+UPDATE huellitas.disenos 
+	SET cantidad_trozos = 5
+	WHERE id_diseno = 1;
+
+-- --------------------------------------------------------
+-- Insertar trozo tabla huellitas.trozos_fabricacion 
+-- --------------------------------------------------------
+INSERT INTO huellitas.trozos_fabricacion (ref_trozo,id_detalle_fabricacion,cantidad)
+	VALUES (4,1,1);
+
+/* 
+ * ELIMINAR UN ZAPATO DE UN LOTE
+ */
+-- --------------------------------------------------------
+-- Actualizar id_lote tabla huellitas.zapatos
+-- --------------------------------------------------------
