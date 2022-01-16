@@ -21,7 +21,8 @@ AND z.id_detalle = df.id_detalle;
 -- ZAPATO A CONSULTAR -> ID: 14
 
 SELECT DISTINCT z.id_zapato, li.id_lote , li.descripcion as material
-FROM huellitas.zapatos z, huellitas.detalles_fabricacion df, huellitas.trozos_fabricacion tf, huellitas.trozos_material tm, huellitas.lotes_importe li 
+FROM huellitas.zapatos z, huellitas.detalles_fabricacion df, huellitas.trozos_fabricacion tf, 
+	 huellitas.trozos_material tm, huellitas.lotes_importe li 
 WHERE z.id_zapato = 14
 AND df.id_detalle = (select id_detalle from huellitas.zapatos where id_zapato = z.id_zapato) 
 AND tf.id_detalle_fabricacion = df.id_detalle
